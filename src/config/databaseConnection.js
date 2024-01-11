@@ -1,9 +1,9 @@
 const MongoClient = require("mongodb").MongoClient;
-
+require("dotenv").config();
 let mongodb;
 
 const setupDB = async () => {
-  const URI = PROCESS.ENV.MONGODB_URI;
+  const URI = process.env.MONGODB_URI;
 
   mongodb = await MongoClient.connect(URI, {
     useNewUrlParser: true,
@@ -12,7 +12,7 @@ const setupDB = async () => {
 };
 
 const getDB = () => {
-  return mongodb.db("dbTest")
-}
+  return mongodb.db("dbTest");
+};
 
 module.exports = { setupDB, getDB };
